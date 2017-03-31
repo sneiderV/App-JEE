@@ -1,0 +1,182 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Sistrants It.2",
+		"_postman_id": "5611ec67-bac7-594f-cbca-0411a80ed09e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/sistema/registrarUsuario",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/sistema/registrarUsuario",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\" : \"Sneider Velandia\",\n\t\"tipoIdent\" : \"CC\",\n\t\"ident\" : 123456,\n\t\"clave\" : 123,\n\t\"rol\" : \"Administrador\",\n\t\"email\" : \"e.velandia@hotmail.com\"\n}"
+				},
+				"description": "RF1 - Registrar Usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/regCompania ",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/regCliente",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\" : \"Maria Cristina\",\n\t\"tipoIdent\" : \"CC\",\n\t\"ident\" : 29384543,\n\t\"email\" : \"mariC@hotmail.com\",\n\t\"ciudad_residencia\" : \"Bogotá\",\n\t\"fecha_Nacimiento\" : \"19/03/64\",\n\t\"prefeCategoria\" : \"Drama\",\n\t\"prefeSitio\" : \"Cubierto\"\n}"
+				},
+				"description": "RF2 - Registrar Compañia de Teatro"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/regCompania",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/regCompania",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idComp\" : 1,\n\t\"nombre\" : \"La Macarena\",\n\t\"representante\" : \"Sneider Velandia Gonzalez\",\n\t\"paisOrigen\" : \"Italia\",\n\t\"pagWeb\" : \"www.LaMacarena.com\"\n}"
+				},
+				"description": "RF3 - Registrar compania con pagWeb"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/regEspectaculo",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/regEspectaculo",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idEspectaculo\" : \"2\",\n\t\"nombre\" : \"La Celestina\",\n\t\"descripcion\" : \" historia de una señora viuda y sola\",\n\t\"categoria\" : \"drama\",\n\t\"duracion\" : \"120\",\n\t\"idioma\" : \"espeñol\",\n\t\"costo_realizacion\" : \"2000000\",\n\t\"requeri_tec\" : \"ninguno\",\n\t\"serv_traduccion\" : \"1\"\n}"
+				},
+				"description": "RF4 - registrar Espectaculo"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/regSitio",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/regSitio",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idSitio\" : 2,\n\t\"nombre\" : \"Auditorio El Centro\",\n\t\"capacidad\" : 50 ,\n\t\"apto_per_espec\" : 1,\n\t\"hora_dispo_inic\" : 7,\n\t\"hora_dispo_final\" : 22,\n\t\"condi_tec\" : \"efectos de luz, ampliacion de sonido\",\n\t\"tipo_silleteria\" : \"General\",\n\t\"proteccion_exterior\" : 1,\n\t\"localidades\" : \"General\"\n}"
+				},
+				"description": "RF5 - Registrar Sitio"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/regFuncion",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/regFuncion",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idFuncion\" : 3,\n\t\"idSitio\" : 1,\n\t\"idEspectaculo\" : 1 ,\n\t\"nombre\" : \"La Celestina\",\n\t\"fecha\" : \"16/03/2017 14:00\",\n\t\"duracion\" : 120,\n\t\"costoBoleta\" : 10000\n}"
+				},
+				"description": "RF6 - Programar una Funcion "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/regPreferenciaCliente?identificacion=29384543&prefeCategoria=Drama&prefeSitio=Cerrado",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/regPreferenciaCliente?identificacion=29384543&prefeCategoria=Drama&prefeSitio=Cerrado",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "RF7 - Agregar preferencia de cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/comprarBoleta",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/comprarBoleta",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idBoleta\" : 1,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 4\n}"
+				},
+				"description": "RF8 - Registrar compra de boletas"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/operaServ/regRealizacionFuncion",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/operaServ/regRealizacionFuncion",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idFuncion\" : 1,\n\t\"realizado\" : 1\n}"
+				},
+				"description": "RF9 - registrar la realizacion de una funcion"
+			},
+			"response": []
+		}
+	]
+}

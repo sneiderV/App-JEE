@@ -1,0 +1,97 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ITE2 CONSULTA",
+		"_postman_id": "fa41cace-c39c-5fd1-e4fc-015babc663a8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/reporteFuncion?idFuncion=1",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/reporteFuncion?idFuncion=1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idFuncion\" : 1,\n\t\"realizado\" : 1\n}"
+				},
+				"description": "RFC3 "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/reporteEspectaculo?idEspectaculo=1",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/reporteEspectaculo?idEspectaculo=1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC4 - Generar un reporte de un espectaculo"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarSitio?idSitio=1",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarSitio?idSitio=1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC2 - Consultar sitio "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xCategoria=drama",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xCategoria=drama",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC1 - POR CATEGORIA"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xFechaInicio=23/01/2017 00:00&xFechaFinal=25/12/2017 00:00",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xFechaInicio=23/01/2017 00:00&xFechaFinal=25/12/2017 00:00",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC1- por rango de fechas"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?Servicio Traduccion=1",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?Servicio Traduccion=1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC1 - por servicio de traduccion"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xIdioma=español",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarFuncionesEspectaculosProgramados?xIdioma=español",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC1 - Por IDIOMA "
+			},
+			"response": []
+		}
+	]
+}
