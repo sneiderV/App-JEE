@@ -27,6 +27,12 @@ import uniandes.cupi2.elecciones.mundo.Urna;
 /**
  * Esta es la ventana principal de la aplicación.
  */
+
+
+///////
+///////ESTA ES UNA LINDA PRUEBA
+///////
+
 @SuppressWarnings("serial")
 public class InterfazElecciones extends JFrame
 {
