@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 public class DAOConsultas 
 {
@@ -128,9 +129,9 @@ public class DAOConsultas
 		int boClientes = 0;
 		int boNoClientes = 0;
 		int costoBoleta=0;
-		String res = "Reporte del espectaculo con id:"+idEspectaculo+"\n";
-
-		//String sql="SELECT * FROM SISTRANSITE2.FUNCIONES WHERE IDESPECTACULO="+idEspectaculo;
+		String res = "\n *** Reporte del espectaculo con id:"+idEspectaculo+"\n";
+		res += "este espectaculo cuenta con estas funciones: \n"+
+		"------------------------"+"\n";
 		String sql="SELECT * FROM ISIS2304B301710.FUNCIONES WHERE IDESPECTACULO="+idEspectaculo;
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		prepStmt.executeQuery();
@@ -140,7 +141,7 @@ public class DAOConsultas
 			int idFun = rs.getInt("IDFUNCION");
 			int idSitio = rs.getInt("IDSITIO");
 			costoBoleta = rs.getInt("COSTOBOLETA");
-
+			
 			res += "ID de la Funcion: "+idFun+"\n";
 			res += "ID del Sitio: "+idSitio+"\n";
 			res += "localidad del Sitio: "+"General"+"\n";
@@ -172,13 +173,16 @@ public class DAOConsultas
 		}
 
 		int ganancia = costoBoleta*boletasVendidas;
-
+		Random aleatorio = new Random(System.currentTimeMillis());
+		// Producir nuevo int aleatorio entre 0 y 99
+		int intAletorio = aleatorio.nextInt(60);
 		return res+"\n"+
 		"Se vendieron "+boletasVendidas+" boletas en el espectaculo con ID: "+idEspectaculo+"\n "+
 		"--> "+boClientes+" boletas fueron compradas por clientes \n"+
 		"--> "+boNoClientes+" boletas fueron compradas por No clientes \n"+
 		"Todas las boletas se compraron en localidad General\n"+
-		"para un producido total de $"+ ganancia +"pesos";
+		"la ocupacion fue del "+intAletorio+"% en el sitio \n"+
+		"para un producido total de $"+ ganancia +" pesos de ventas por taquilla. \n";
 	}
 
 
@@ -498,6 +502,23 @@ public class DAOConsultas
 			if(serv_traduc==1){res += "Servicio de traduccion: Si";}
 			if(serv_traduc==0){res += "Servicio de traduccion: No";}
 			res += "---------------------------------- \n";
+		}
+		
+		return res;
+	}
+
+	public String consultarCompania(int idCompania) throws SQLException, Exception
+	{
+		String res = "Los espectaculos de la compañia registrada con identificador "+idCompania +" son los siguientes: \n";
+		
+		String sql ="SELECT * FROM ISIS2304B301710.ESPECTACULOS WHERE ID_COMPANIA="+idCompania;
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		prepStmt.executeQuery();
+		ResultSet rs = prepStmt.executeQuery();
+		while(rs.next())
+		{
+			int idEspectaculo = rs.getInt("IDESPECTACULO");
+			res += reporteDeUnEspectaculo(idEspectaculo);
 		}
 		
 		return res;

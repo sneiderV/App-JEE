@@ -67,7 +67,7 @@ public class ConsultaServices
 	@Path("reporteEspectaculo")
 	public String reporteDeUnEspectaculo(@QueryParam("idEspectaculo") int idEspectaculo)
 	{
-		System.out.println("_______GENERANDO REPORDE DE UNA FUNCION______");
+		System.out.println("_______GENERANDO REPORDE DE UN ESPECTACULO______");
 		System.out.println("--->bucar el espectaculo con id:"+idEspectaculo);
 		FestivAndesMaster tm = new FestivAndesMaster(getPath());
 		String res;
@@ -131,6 +131,49 @@ public class ConsultaServices
 			return "Error en la consulta del Query";
 		}
 		return res;
-
+		
 	}
+	
+///////////////////////////// v2.0 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	/**
+	 * RFC8 CONSULTAR COMPAÑÍA
+	 * @param idCompania
+	 * @return reporte de una compañia
+	 */
+	@GET
+	@Path("consultarCompania")
+	public String consultarCompania(@QueryParam("idCompania") int idCompania)
+	{
+		System.out.println("_______GENERANDO REPORTE DE LA COMPAÑIA______");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try {
+			res = tm.consultarCompania(idCompania);
+		} catch (Exception e) {
+			return "Error en la consulta del Query ... mirar sentencia Sql";
+		}
+		return res;
+	}
+	
+	/**
+	 * RFC 7 v2.0
+	 * 
+	 * @param idCliente
+	 * @return
+	 */
+	@GET
+	@Path("consultarAsistenciaCliente")
+	public String consultarAsistenciaCliente(@QueryParam("idCliente") int idCliente)
+	{
+		System.out.println("_______GENERANDO CONSULTA DE ASISTENCIA PARA UN CLIENTE ______");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try {
+			res = tm.consultarAsistenciaCliente(idCliente);
+		} catch (Exception e) {
+			return "Error en la consulta del Query ... mirar sentencia Sql";
+		}
+		return res;
+	}
+	
 }

@@ -1,0 +1,102 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Sistrans it.3",
+		"_postman_id": "c5f662ce-4c7c-3798-3901-54b8a53a8141",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/comprarBoletas",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/comprarBoletas",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\"idBoleta\" : 1,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 2\n\t},\n\t{\n\t\"idBoleta\" : 2,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 4\n\t},\n\t{\n\t\"idBoleta\" : 3,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 6\n\t},\n\t{\n\t\"idBoleta\" : 4,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 8\n\t}\n]"
+				},
+				"description": "RF10-Registrar compra multiple de boletas"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/regAbonamiento",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/regAbonamiento",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\"idBoleta\" : 2,\n\t\"idFuncion\" : 1,\n\t\"idCliente\" : 29384543 ,\n\t\"localidad\" : \"general\",\n\t\"num_sillas\" : 2\n\t}\n\t\n]"
+				},
+				"description": "RF11-Registrar compra de un abonamiento"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/devolverBoleta?idBoleta=4&idCliente=29384543",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/devolverBoleta?idBoleta=4&idCliente=29384543",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "RF12-Devolver boleta"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/adminServ/cancelarFuncion?idFuncion=11",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/adminServ/cancelarFuncion?idFuncion=11",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": "RF14-Cancelar una funcion "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/clienteServ/devolverAbonamiento",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/clienteServ/devolverAbonamiento",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idCliente\" : 29384543,\n\t\"idBoletas\":[2,3]\n}"
+				},
+				"description": "RF13-Devolver abonamiento"
+			},
+			"response": []
+		}
+	]
+}

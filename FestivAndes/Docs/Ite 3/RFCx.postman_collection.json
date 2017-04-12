@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ITE3 CONSULTA",
+		"_postman_id": "70aa2f4c-dc41-03ba-463e-97db0b66c780",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarCompania?idCompania=1",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarCompania?idCompania=1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC-8"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarAsistenciaCliente?idCliente=29384543",
+			"request": {
+				"url": "http://localhost:8080/FestivAndes/rest/consultaServ/consultarAsistenciaCliente?idCliente=29384543",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "RFC-7 \n"
+			},
+			"response": []
+		}
+	]
+}

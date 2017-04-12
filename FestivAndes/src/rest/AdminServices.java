@@ -177,5 +177,27 @@ public class AdminServices
 		return Response.status(200).entity(funcion).build();
 	}
 
-
+///////////////////////////////////////////// ip vol2.0 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	/**
+	 * RF14 v2.0
+	 * 
+	 * @param idFuncion
+	 * @return
+	 */
+	@PUT
+	@Path("cancelarFuncion")
+	public String cancelarFuncion(@QueryParam("idFuncion") int idFuncion) 
+	{
+		System.out.println("---> Se quiere cancelar la funcion "+idFuncion);
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try
+		{
+			res = tm.cancelarFuncion(idFuncion);
+		} catch (Exception e) {
+			return "Error al devolver la boleta  //(Query)";
+		}
+		return res;
+	}
 }

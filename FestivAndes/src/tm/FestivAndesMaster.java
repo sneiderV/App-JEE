@@ -21,6 +21,7 @@ import java.util.Properties;
 import dao.DAOConsultas;
 import dao.DAOTablaClientes;
 import dao.DAOTablaCompaniaDeTeatro;
+import dao.DAOTablaCompraAbonamiento;
 import dao.DAOTablaCompraBoletas;
 import dao.DAOTablaEspectaculos;
 import dao.DAOTablaFuncionRealizada;
@@ -771,6 +772,7 @@ public class FestivAndesMaster {
 		{
 			//////Transaccion
 			this.conn = darConexion();
+			conn.setAutoCommit(false);
 			daoConsulta.setConn(conn);
 			res = daoConsulta.reporteDeUnaFuncion(idFuncion);
 			conn.commit();
@@ -955,6 +957,424 @@ public class FestivAndesMaster {
 			}
 		}
 	}
+
+	/**
+	 * RF10 V2.0
+	 * @param boletas
+	 * @return
+	 * @throws Exception
+	 */
+	public String regCompraMultiBoleta(CompraBoletas[]  boletas) throws Exception
+	{
+		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
+		String res=null;
+		try 
+		{
+			//------> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+			
+			daoCompraBol.setConn(conn);
+			res = daoCompraBol.regCompraMultiBoleta(boletas);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			throw e;
+		} finally {
+			try {
+
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoCompraBol.cerrarRecursos();
+				
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+	}
+
+	/**
+	 * RF12
+	 * 	
+	 * @param idBoleta
+	 * @return
+	 * @throws Exception
+	 */
+	public String devolverBoleta(int idBoleta, int idCliente) throws Exception
+	{
+		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
+		String res=null;
+		try 
+		{
+			//------> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+			
+			daoCompraBol.setConn(conn);
+			res = daoCompraBol.devolverBoleta(idBoleta, idCliente);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			
+			throw e;
+		} finally {
+			try {
+				
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+
+				daoCompraBol.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+	}
+
+	/**
+	 * RF11 V2.0
+	 * @param boletas
+	 * @return
+	 * @throws Exception
+	 */
+	public String regAbonamiento(CompraBoletas[] boletas) throws Exception
+	{
+		DAOTablaCompraAbonamiento daoCompraAbonamiento = new DAOTablaCompraAbonamiento();
+		String res=null;
+		try 
+		{
+			//-----> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+			
+			daoCompraAbonamiento.setConn(conn);
+			res = daoCompraAbonamiento.regAbonamiento(boletas);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			
+			throw e;
+		} finally {
+			try {
+				
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoCompraAbonamiento.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+	}
+
+	/**
+	 * RF13 v2.0
+	 * 
+	 * @param idCliente
+	 * @param arrayBoletasDevueltas
+	 * @return
+	 * @throws Exception
+	 */
+	public String devolverAbonamiento(int idCliente, int[] arrayBoletasDevueltas) throws Exception
+	{
+		DAOTablaCompraAbonamiento daoCompraAbona = new DAOTablaCompraAbonamiento();
+		String res=null;
+		try 
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+			
+			daoCompraAbona.setConn(conn);
+			res = daoCompraAbona.devolverAbonamientos(idCliente,arrayBoletasDevueltas);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			
+			throw e;
+		} finally {
+			try {
+
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoCompraAbona.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
+
+	/**
+	 * RFC8 v2.0   ojo se llama desde consultaservices
+	 * @param idCompania
+	 * @return
+	 * @throws Exception
+	 */
+	public String consultarCompania(int idCompania) throws Exception
+	{
+		DAOConsultas daoConsultas = new DAOConsultas();
+		String res=null;
+		try 
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_READ_UNCOMMITTED);
+			
+			daoConsultas.setConn(conn);
+			res = daoConsultas.consultarCompania(idCompania);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			
+			throw e;
+		} finally {
+			try {
+				
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoConsultas.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
+
+	/**
+	 * RF14 v2.0
+	 * 
+	 * @param idFuncion
+	 * @return
+	 * @throws Exception
+	 */
+	public String cancelarFuncion(int idFuncion) throws Exception
+	{
+		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
+		String res=null;
+		try 
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
+			
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
+			
+			daoCompraBol.setConn(conn);
+			res = daoCompraBol.cancelarFuncion(idFuncion);
+			conn.commit();
+			
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error con sql
+			conn.rollback();
+			
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			
+			//rollback si hay error de negocio.
+			conn.rollback();
+			
+			throw e;
+		} finally {
+			try {
+				
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoCompraBol.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
+
+	/**
+	 * RFC 7
+	 * 
+	 * @param idCliente
+	 * @return
+	 */
+	public String consultarAsistenciaCliente(int idCliente) throws Exception {
+		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
+		String res=null;
+		try 
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
+			
+			//activo el autocommit
+			conn.setAutoCommit(true);
+			
+			daoCompraBol.setConn(conn);
+			res = daoCompraBol.consultarAsistenciaCliente(idCliente);
+			conn.commit();
+			
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+				
+				daoCompraBol.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
+
+
 
 
 }

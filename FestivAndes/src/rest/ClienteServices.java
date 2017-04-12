@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 
 import tm.FestivAndesMaster;
 import vos.CompraBoletas;
+import vos.DevolverAbonamiento;
 
 @Path("clienteServ")
 public class ClienteServices 
@@ -97,5 +98,111 @@ public class ClienteServices
 		return Response.status(200).entity(boleta).build();
 	}
 
+	
+///////////////////////////////////////////////////////IP:= v2.0///////////////////////////////////////////////////////////////////
+	/**
+	 * RF10
+	 * 
+	 * 
+	 * 
+	 * @param boleta - boleta a agregar
+	 * @return Json con el cliente que agrego o Json con el error que se produjo
+	 */
+	@PUT
+	@Path("comprarBoletas")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String regCompraMultiBoleta(CompraBoletas [] boletas) 
+	{
+		System.out.println("---> Se estan comprando multiples boletas por un solo cliente");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try
+		{
+			res = tm.regCompraMultiBoleta(boletas);
+		} catch (Exception e) {
+			return "Error en el registro de las boletas //(Query)";
+		}
+		return res;
+	}
+	
+	/**
+	 * RF11
+	 * 
+	 * Registrar compra de un abonamiento
+	 * @param boleta - boleta a agregar
+	 * @return Json con el cliente que agrego o Json con el error que se produjo
+	 */
+	@PUT
+	@Path("regAbonamiento")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String regAbonamiento(CompraBoletas [] boletas) 
+	{
+		System.out.println("---> Se estan comprando multiples boletas por un solo cliente en forma de ABONAMIENTO");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try
+		{
+			res = tm.regAbonamiento(boletas);
+		} catch (Exception e) {
+			return "Error en el registro de las boletas //(Query)";
+		}
+		return res;
+	}
+	
+	/**
+	 * RF12
+	 * 
+	 * @param idBoleta - boleta a eliminar
+	 * @return respuesta de la transaccion
+	 */
+	@PUT
+	@Path("devolverBoleta")
+	public String devolverBoleta(@QueryParam("idBoleta") int idBoleta, @QueryParam("idCliente") int idCliente ) 
+	{
+		System.out.println("---> Se quiere devolver la boleta "+idBoleta+" del cliente con identificacion "+idCliente);
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try
+		{
+			res = tm.devolverBoleta(idBoleta,idCliente);
+		} catch (Exception e) {
+			return "Error al devolver la boleta  //(Query)";
+		}
+		return res;
+	}
+	
+	/**
+	 * RF13
+	 * 
+	 * @param idBoleta - boleta a eliminar
+	 * @return respuesta de la transaccion
+	 */
+	@PUT
+	@Path("devolverAbonamiento")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String devolverAbonamiento(DevolverAbonamiento abonamiento) 
+	{
+		int arrayBoletasDevueltas[] = abonamiento.getIdBoletas();
+		System.out.println("---> Se quiere devolver las boletas con id:");
+		for (int i = 0; i < arrayBoletasDevueltas.length; i++) 
+		{
+			System.out.println(arrayBoletasDevueltas[i]);
+		}
+		System.out.println(" del cliente con identificacion "+abonamiento.getIdCliente());
+		
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		String res;
+		try
+		{
+			res = tm.devolverAbonamiento(abonamiento.getIdCliente(),arrayBoletasDevueltas);
+		} catch (Exception e) {
+			return "Error al devolver la boleta  //(Mira el Query)";
+		}
+		return res;
+	}
+
+
+
+	
 
 }

@@ -32,6 +32,9 @@ public class Espectaculo
 	
 	@JsonProperty(value="serv_traduccion")
 	private int serv_tradu;
+	
+	@JsonProperty(value="idCompania")
+	private int idCompania;
 
 	public Espectaculo(
 			@JsonProperty(value="idEspectaculo") int id, 
@@ -42,7 +45,8 @@ public class Espectaculo
 			@JsonProperty(value="idioma") String idioma,
 			@JsonProperty(value="costo_realizacion") int costo,
 			@JsonProperty(value="requeri_tec") String req_tec,
-			@JsonProperty(value="serv_traduccion") int traduc
+			@JsonProperty(value="serv_traduccion") int traduc,
+			@JsonProperty(value="idCompania") int idCompania
 			)
 	{
 		super();
@@ -55,7 +59,16 @@ public class Espectaculo
 		this.costoRealizacion = costo;
 		this.requeri_tec = req_tec;
 		this.serv_tradu = traduc;
+		this.idCompania=idCompania;
 		}
+
+	public int getIdCompania() {
+		return idCompania;
+	}
+
+	public void setIdCompania(int idCompania) {
+		this.idCompania = idCompania;
+	}
 
 	public int getIdEspec() {
 		return idEspec;
