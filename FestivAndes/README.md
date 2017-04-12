@@ -1,2 +1,3 @@
 # java-server
-Basic REST/JDBC server based on RedHat Wildfly
+REST using JDBC server based on RedHat Wildfly
+all this proyect is for my academy. 
