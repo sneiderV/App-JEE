@@ -444,6 +444,14 @@ public class DAOConsultas
 		return res;
 	}
 
+	/**
+	 * Bono ite2
+	 * @param f1
+	 * @param f2
+	 * @return
+	 * @throws SQLException
+	 * @throws Exception
+	 */
 	public String bono2(String f1, String f2) throws SQLException, Exception  
 	{
 		// probar con 11/01/2017 00:0 y 25/07/2017 00:00

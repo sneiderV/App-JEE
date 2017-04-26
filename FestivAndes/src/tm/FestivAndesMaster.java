@@ -1219,7 +1219,7 @@ public class FestivAndesMaster {
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
-			conn.setTransactionIsolation(conn.TRANSACTION_READ_UNCOMMITTED);
+			conn.setTransactionIsolation(conn.TRANSACTION_READ_COMMITTED);
 			
 			daoConsultas.setConn(conn);
 			res = daoConsultas.consultarCompania(idCompania);
