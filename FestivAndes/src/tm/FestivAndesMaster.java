@@ -84,7 +84,7 @@ public class FestivAndesMaster {
 
 
 	/**
-	 * Método constructor de la clase VideoAndesMaster, esta clase modela y contiene cada una de las 
+	 * Método constructor de la clase VideoAndesMaster, esta clase modela y contiene cada una de las
 	 * transacciones y la logia de negocios que estas conllevan.
 	 * <b>post: </b> Se crea el objeto VideoAndesMaster, se inicializa el path absoluto de el archivo de conexión y se
 	 * inicializa los atributos que se usan par la conexión a la base de datos.
@@ -139,7 +139,7 @@ public class FestivAndesMaster {
 	public ListaVideos darVideos() throws Exception {
 		ArrayList<Video> videos;
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -177,7 +177,7 @@ public class FestivAndesMaster {
 	public ListaVideos buscarVideosPorName(String name) throws Exception {
 		ArrayList<Video> videos;
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -214,7 +214,7 @@ public class FestivAndesMaster {
 	 */
 	public void addVideo(Video video) throws Exception {
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -251,7 +251,7 @@ public class FestivAndesMaster {
 	 */
 	public void addVideos(ListaVideos videos) throws Exception {
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción - ACID Example
 			this.conn = darConexion();
@@ -291,7 +291,7 @@ public class FestivAndesMaster {
 	 */
 	public void updateVideo(Video video) throws Exception {
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -327,7 +327,7 @@ public class FestivAndesMaster {
 	 */
 	public void deleteVideo(Video video) throws Exception {
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -363,7 +363,7 @@ public class FestivAndesMaster {
 	public ListaVideos videosMasAlquilados() throws Exception {
 		ArrayList<Video> videos;
 		DAOTablaVideos daoVideos = new DAOTablaVideos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -395,10 +395,10 @@ public class FestivAndesMaster {
 
 	//////////////////////////////////////////SERVICIOS DEL SISTEMA///////////////////////////////////////////////////////////////////////////////
 
-	public void crearUsuario(Usuario usuario) throws Exception 
+	public void crearUsuario(Usuario usuario) throws Exception
 	{
 		DAOTablaUsuarios daoUsuarios= new DAOTablaUsuarios();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -438,7 +438,7 @@ public class FestivAndesMaster {
 	 */
 	public void addCompania(CompaniaDeTeatro compania) throws Exception {
 		DAOTablaCompaniaDeTeatro daoCompania = new DAOTablaCompaniaDeTeatro();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -475,7 +475,7 @@ public class FestivAndesMaster {
 	 */
 	public void addCliente(Cliente cliente) throws Exception {
 		DAOTablaClientes daoClientes = new DAOTablaClientes();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -512,7 +512,7 @@ public class FestivAndesMaster {
 	 */
 	public void addEspectaculo(Espectaculo espectaculo) throws Exception {
 		DAOTablaEspectaculos daoEspectaculo = new DAOTablaEspectaculos();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -549,7 +549,7 @@ public class FestivAndesMaster {
 	 */
 	public void addSitio(Sitio sitio) throws Exception {
 		DAOTablaSitios daoSitio = new DAOTablaSitios();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -586,7 +586,7 @@ public class FestivAndesMaster {
 	 */
 	public void addFuncion(Funcion funcion) throws Exception {
 		DAOTablaFunciones daoFuncion= new DAOTablaFunciones();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -624,7 +624,7 @@ public class FestivAndesMaster {
 	public void addModPreferenciaCliente(int id, String prefCategoria, String prefSitio) throws Exception
 	{
 		DAOTablaClientes daoCliente = new DAOTablaClientes();
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -654,12 +654,12 @@ public class FestivAndesMaster {
 
 
 	}
-	
+
 	public void addComprarBoletas(CompraBoletas comBoletas) throws Exception {
 
 		DAOTablaCompraBoletas daoCompraBoleta= new DAOTablaCompraBoletas();
 
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -691,11 +691,11 @@ public class FestivAndesMaster {
 	}
 
 
-	public Funcion buscarFuncionPorId(int id) throws Exception 
+	public Funcion buscarFuncionPorId(int id) throws Exception
 	{
 		DAOTablaFunciones daoFuncion = new DAOTablaFunciones();
 		Funcion resFuncion = new Funcion(0, 0, 0, null, null, 0,0);
-		try 
+		try
 		{
 			//////Transacción
 			this.conn = darConexion();
@@ -731,7 +731,7 @@ public class FestivAndesMaster {
 
 		DAOTablaFuncionRealizada daoFunRealizada = new DAOTablaFuncionRealizada();
 
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -762,13 +762,13 @@ public class FestivAndesMaster {
 		}
 	}
 
-	
-////////////////////////////////SERVICIOS DE LAS CONSULTAS///////////////////////////////////////////////////////////////////////////////////////////////////////	
+
+////////////////////////////////SERVICIOS DE LAS CONSULTAS///////////////////////////////////////////////////////////////////////////////////////////////////////
 	public String reporteDeUnaFuncion(int idFuncion) throws Exception
 	{
 		DAOConsultas daoConsulta = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -802,7 +802,7 @@ public class FestivAndesMaster {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idEspectaculo
 	 * @return
 	 * @throws Exception
@@ -811,7 +811,7 @@ public class FestivAndesMaster {
 	{
 		DAOConsultas daoConsulta = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -844,7 +844,7 @@ public class FestivAndesMaster {
 	}
 
 	/**
-	 * modela la transaccion de un reporte de un sitio 
+	 * modela la transaccion de un reporte de un sitio
 	 * @param idSitio
 	 * @return
 	 * @throws Exception
@@ -853,7 +853,7 @@ public class FestivAndesMaster {
 	{
 		DAOConsultas daoConsulta = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -884,12 +884,12 @@ public class FestivAndesMaster {
 			}
 		}
 	}
-	
+
 	public String consultarFuncionesEspectaculosProgramados(String xCategoria, String xIdioma, int serTra, String fechaInicio, String fechaFinal) throws Exception
 	{
 		DAOConsultas daoConsulta = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -921,12 +921,12 @@ public class FestivAndesMaster {
 		}
 	}
 
-	
+
 	public String bono2(String f1, String f2) throws Exception
 	{
 		DAOConsultas daoConsulta = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//////Transaccion
 			this.conn = darConexion();
@@ -968,17 +968,17 @@ public class FestivAndesMaster {
 	{
 		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
 		String res=null;
-		try 
+		try
 		{
 			//------> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
-			
+
 			daoCompraBol.setConn(conn);
 			res = daoCompraBol.regCompraMultiBoleta(boletas);
 			conn.commit();
@@ -987,14 +987,14 @@ public class FestivAndesMaster {
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
 			throw e;
@@ -1003,9 +1003,9 @@ public class FestivAndesMaster {
 
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoCompraBol.cerrarRecursos();
-				
+
 				if(this.conn!=null)
 					this.conn.close();
 			} catch (SQLException exception) {
@@ -1018,7 +1018,7 @@ public class FestivAndesMaster {
 
 	/**
 	 * RF12
-	 * 	
+	 *
 	 * @param idBoleta
 	 * @return
 	 * @throws Exception
@@ -1027,17 +1027,17 @@ public class FestivAndesMaster {
 	{
 		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
 		String res=null;
-		try 
+		try
 		{
 			//------> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
-			
+
 			daoCompraBol.setConn(conn);
 			res = daoCompraBol.devolverBoleta(idBoleta, idCliente);
 			conn.commit();
@@ -1046,22 +1046,22 @@ public class FestivAndesMaster {
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
-			
+
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
-			
+
 			throw e;
 		} finally {
 			try {
-				
+
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
 
@@ -1087,17 +1087,17 @@ public class FestivAndesMaster {
 	{
 		DAOTablaCompraAbonamiento daoCompraAbonamiento = new DAOTablaCompraAbonamiento();
 		String res=null;
-		try 
+		try
 		{
 			//-----> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
-			
+
 			daoCompraAbonamiento.setConn(conn);
 			res = daoCompraAbonamiento.regAbonamiento(boletas);
 			conn.commit();
@@ -1106,25 +1106,25 @@ public class FestivAndesMaster {
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
-			
+
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
-			
+
 			throw e;
 		} finally {
 			try {
-				
+
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoCompraAbonamiento.cerrarRecursos();
 
 				if(this.conn!=null)
@@ -1139,7 +1139,7 @@ public class FestivAndesMaster {
 
 	/**
 	 * RF13 v2.0
-	 * 
+	 *
 	 * @param idCliente
 	 * @param arrayBoletasDevueltas
 	 * @return
@@ -1149,17 +1149,17 @@ public class FestivAndesMaster {
 	{
 		DAOTablaCompraAbonamiento daoCompraAbona = new DAOTablaCompraAbonamiento();
 		String res=null;
-		try 
+		try
 		{
 			//----> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
-			
+
 			daoCompraAbona.setConn(conn);
 			res = daoCompraAbona.devolverAbonamientos(idCliente,arrayBoletasDevueltas);
 			conn.commit();
@@ -1168,25 +1168,25 @@ public class FestivAndesMaster {
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
-			
+
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
-			
+
 			throw e;
 		} finally {
 			try {
 
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoCompraAbona.cerrarRecursos();
 
 				if(this.conn!=null)
@@ -1210,17 +1210,17 @@ public class FestivAndesMaster {
 	{
 		DAOConsultas daoConsultas = new DAOConsultas();
 		String res=null;
-		try 
+		try
 		{
 			//----> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_READ_COMMITTED);
-			
+
 			daoConsultas.setConn(conn);
 			res = daoConsultas.consultarCompania(idCompania);
 			conn.commit();
@@ -1229,25 +1229,25 @@ public class FestivAndesMaster {
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
-			
+
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
-			
+
 			throw e;
 		} finally {
 			try {
-				
+
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoConsultas.cerrarRecursos();
 
 				if(this.conn!=null)
@@ -1263,7 +1263,7 @@ public class FestivAndesMaster {
 
 	/**
 	 * RF14 v2.0
-	 * 
+	 *
 	 * @param idFuncion
 	 * @return
 	 * @throws Exception
@@ -1272,45 +1272,45 @@ public class FestivAndesMaster {
 	{
 		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
 		String res=null;
-		try 
+		try
 		{
 			//----> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//desactivo el autocommit
 			conn.setAutoCommit(false);
 
 			//agrego nivel de aislamiento a la transaccion
 			conn.setTransactionIsolation(conn.TRANSACTION_SERIALIZABLE);
-			
+
 			daoCompraBol.setConn(conn);
 			res = daoCompraBol.cancelarFuncion(idFuncion);
 			conn.commit();
-			
+
 			return res;
 
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error con sql
 			conn.rollback();
-			
+
 			throw e;
 		} catch (Exception e) {
 			System.err.println("GeneralException:" + e.getMessage());
 			e.printStackTrace();
-			
+
 			//rollback si hay error de negocio.
 			conn.rollback();
-			
+
 			throw e;
 		} finally {
 			try {
-				
+
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoCompraBol.cerrarRecursos();
 
 				if(this.conn!=null)
@@ -1326,25 +1326,25 @@ public class FestivAndesMaster {
 
 	/**
 	 * RFC 7
-	 * 
+	 *
 	 * @param idCliente
 	 * @return
 	 */
 	public String consultarAsistenciaCliente(int idCliente) throws Exception {
 		DAOTablaCompraBoletas daoCompraBol = new DAOTablaCompraBoletas();
 		String res=null;
-		try 
+		try
 		{
 			//----> inicio la transaccion
 			this.conn = darConexion();
-			
+
 			//activo el autocommit
 			conn.setAutoCommit(true);
-			
+
 			daoCompraBol.setConn(conn);
 			res = daoCompraBol.consultarAsistenciaCliente(idCliente);
 			conn.commit();
-			
+
 			return res;
 
 		} catch (SQLException e) {
@@ -1357,10 +1357,10 @@ public class FestivAndesMaster {
 			throw e;
 		} finally {
 			try {
-				
+
 				//activo el autocommit de nuevo
 				conn.setAutoCommit(true);
-				
+
 				daoCompraBol.cerrarRecursos();
 
 				if(this.conn!=null)
@@ -1374,7 +1374,120 @@ public class FestivAndesMaster {
 
 	}
 
+	/**
+	 * RFC9 v1
+	 */
+	public String consultarAsistencia(int idCompania, String xFechaInicio, String xFechaFinal, String xorderBy) throws Exception
+	{
+		DAOConsultas daoConsultas = new DAOConsultas();
+		String res=null;
+		try
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
 
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
 
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_READ_UNCOMMITTED);
+
+			daoConsultas.setConn(conn);
+			res = daoConsultas.consultarAsistencia(idCompania,xFechaInicio,xFechaFinal,xorderBy);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+
+			//rollback si hay error con sql
+			conn.rollback();
+
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+
+			//rollback si hay error de negocio.
+			conn.rollback();
+
+			throw e;
+		} finally {
+			try {
+
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+
+				daoConsultas.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
+
+	/**
+	 * RFC9 v2
+	 */
+	public String consultarInasistencia(int idCompania, String xFechaInicio, String xFechaFinal,  String xorderBy) throws Exception
+	{
+		DAOConsultas daoConsultas = new DAOConsultas();
+		String res=null;
+		try
+		{
+			//----> inicio la transaccion
+			this.conn = darConexion();
+
+			//desactivo el autocommit
+			conn.setAutoCommit(false);
+
+			//agrego nivel de aislamiento a la transaccion
+			conn.setTransactionIsolation(conn.TRANSACTION_READ_UNCOMMITTED);
+
+			daoConsultas.setConn(conn);
+			res = daoConsultas.consultarInasistencia(idCompania,xFechaInicio,xFechaFinal,xorderBy);
+			conn.commit();
+			return res;
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+
+			//rollback si hay error con sql
+			conn.rollback();
+
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+
+			//rollback si hay error de negocio.
+			conn.rollback();
+
+			throw e;
+		} finally {
+			try {
+
+				//activo el autocommit de nuevo
+				conn.setAutoCommit(true);
+
+				daoConsultas.cerrarRecursos();
+
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+
+	}
 
 }

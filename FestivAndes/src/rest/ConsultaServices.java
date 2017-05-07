@@ -15,7 +15,7 @@ import tm.FestivAndesMaster;
  */
 
 @Path("consultaServ")
-public class ConsultaServices 
+public class ConsultaServices
 {
 	/**
 	 * Atributo que usa la anotaciÃ³n @Context para tener el ServletContext de la conexiÃ³n actual.
@@ -39,7 +39,7 @@ public class ConsultaServices
 	// METODO USADO PARA PROBAR EL URI CORRECTO \\
 	@GET
 	@Path("sayHello")
-	public String sayHello(@QueryParam("name")String name) 
+	public String sayHello(@QueryParam("name")String name)
 	{
 		System.out.println("aasaaa");
 		return "asa: "+name;
@@ -79,7 +79,7 @@ public class ConsultaServices
 		return res;
 
 	}
-	
+
 	@GET
 	@Path("consultarSitio")
 	public String reporteDeUnSitio(@QueryParam("idSitio") int idSitio)
@@ -96,7 +96,7 @@ public class ConsultaServices
 		return res;
 
 	}
-	
+
 	@GET
 	@Path("consultarFuncionesEspectaculosProgramados")
 	public String consultarFuncionesEspectaculosProgramados(
@@ -116,7 +116,7 @@ public class ConsultaServices
 		}
 		return res;
 	}
-	
+
 	@GET
 	@Path("bono2")
 	public String bono2(@QueryParam("fechaInicio") String f1, @QueryParam("fechaFinal") String f2 )
@@ -131,20 +131,20 @@ public class ConsultaServices
 			return "Error en la consulta del Query";
 		}
 		return res;
-		
+
 	}
-	
+
 ///////////////////////////// v2.0 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	/**
-	 * RFC8 CONSULTAR COMPAÑÍA
+	 * RFC8 CONSULTAR COMPAï¿½ï¿½A
 	 * @param idCompania
-	 * @return reporte de una compañia
+	 * @return reporte de una compaï¿½ia
 	 */
 	@GET
 	@Path("consultarCompania")
 	public String consultarCompania(@QueryParam("idCompania") int idCompania)
 	{
-		System.out.println("_______GENERANDO REPORTE DE LA COMPAÑIA______");
+		System.out.println("_______GENERANDO REPORTE DE LA COMPAï¿½IA______");
 		FestivAndesMaster tm = new FestivAndesMaster(getPath());
 		String res;
 		try {
@@ -154,10 +154,10 @@ public class ConsultaServices
 		}
 		return res;
 	}
-	
+
 	/**
 	 * RFC 7 v2.0
-	 * 
+	 *
 	 * @param idCliente
 	 * @return
 	 */
@@ -175,5 +175,63 @@ public class ConsultaServices
 		}
 		return res;
 	}
-	
+
+	/**
+	 * RFC 9 v1
+	 *
+	 * @param idCompania
+	 * @return
+	 */
+	@GET
+	@Path("consultarAsistencia")
+	public String consultarAsistencia(@QueryParam("idCompania") int idCompania,
+									  @QueryParam("xFechaInicio") String xFechaInicio,
+									  @QueryParam("xFechaFinal") String xFechaFinal,
+									  @QueryParam("xorderBy") String xorderBy)
+	{
+		System.out.println("_______GENERANDO CONSULTA DE ASISTENCIA A FESTIVANDES ______");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		//Tiempo Inicio
+		float tiempIn = System.currentTimeMillis();
+		String res;
+		try {
+			res = tm.consultarAsistencia(idCompania,xFechaInicio,xFechaFinal,xorderBy);
+		} catch (Exception e) {
+			return "Error en la consulta del Query ... mirar sentencia Sql";
+		}
+		float tiempFn = System.currentTimeMillis()-tiempIn;
+		return res+"\n Tiempo Ejecuciï¿½n: "+tiempFn;
+
+	}
+
+	/**
+	 * RFC 9 v2
+	 *
+	 * @param idCompania
+	 * @return
+	 */
+	@GET
+	@Path("consultarInasistencia")
+	public String consultarInasistencia(@QueryParam("idCompania") int idCompania,
+										@QueryParam("xFechaInicio") String xFechaInicio,
+										@QueryParam("xFechaFinal") String xFechaFinal,
+										@QueryParam("xorderBy") String xorderBy)
+	{
+		System.out.println("_______GENERANDO CONSULTA DE INASISTENCIA A FESTIVANDES ______");
+		FestivAndesMaster tm = new FestivAndesMaster(getPath());
+		//Tiempo Inicio
+		float tiempIn = System.currentTimeMillis();
+
+		String res;
+		try {
+			res = tm.consultarInasistencia(idCompania,xFechaInicio,xFechaFinal,xorderBy);
+		} catch (Exception e) {
+			return "Error en la consulta del Query ... mirar sentencia Sql";
+		}
+		float tiempFn = System.currentTimeMillis()-tiempIn;
+		return res+"\n Tiempo Ejecuciï¿½n: "+tiempFn;
+
+
+	}
+
 }

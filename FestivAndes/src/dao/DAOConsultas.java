@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class DAOConsultas 
+public class DAOConsultas
 {
 	/**
 	 * Arraylits de recursos que se usan para la ejecución de sentencias SQL
@@ -25,7 +25,7 @@ public class DAOConsultas
 	 * Método constructor que crea DAOVideo
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
-	public DAOConsultas() 
+	public DAOConsultas()
 	{
 		recursos = new ArrayList<Object>();
 	}
@@ -55,7 +55,7 @@ public class DAOConsultas
 
 	/////////////////////////CONSULTAS ITE 2/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public Date convertirFecha(String fecha) throws Exception 
+	public Date convertirFecha(String fecha) throws Exception
 	{
 		Date fe=null;
 		try
@@ -69,7 +69,7 @@ public class DAOConsultas
 		return fe;
 	}
 
-	public String reporteDeUnaFuncion(int idFuncion) throws SQLException, Exception 
+	public String reporteDeUnaFuncion(int idFuncion) throws SQLException, Exception
 	{
 		int boletasVendidas = 0;
 		int boClientes = 0;
@@ -123,7 +123,7 @@ public class DAOConsultas
 	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public String reporteDeUnEspectaculo(int idEspectaculo) throws SQLException, Exception 
+	public String reporteDeUnEspectaculo(int idEspectaculo) throws SQLException, Exception
 	{
 		int boletasVendidas = 0;
 		int boClientes = 0;
@@ -141,7 +141,7 @@ public class DAOConsultas
 			int idFun = rs.getInt("IDFUNCION");
 			int idSitio = rs.getInt("IDSITIO");
 			costoBoleta = rs.getInt("COSTOBOLETA");
-			
+
 			res += "ID de la Funcion: "+idFun+"\n";
 			res += "ID del Sitio: "+idSitio+"\n";
 			res += "localidad del Sitio: "+"General"+"\n";
@@ -168,7 +168,7 @@ public class DAOConsultas
 						boletasVendidas += bolCompradas;
 					}
 				}
-			}	
+			}
 
 		}
 
@@ -186,7 +186,7 @@ public class DAOConsultas
 	}
 
 
-	public String reporteDeUnSitio(int idSitio) throws SQLException, Exception 
+	public String reporteDeUnSitio(int idSitio) throws SQLException, Exception
 	{
 		String res = "-Reporte del Sitio con id:"+idSitio+"\n";
 		res += "Las funciones programadas para el sitio son las siguientes: "+"\n";
@@ -256,7 +256,7 @@ public class DAOConsultas
 	}
 
 
-	public String consultarFuncionesEspectaculosProgramados(String categoriaX, String idiomaX, int servTraduccion, String f1, String f2) throws SQLException, Exception 
+	public String consultarFuncionesEspectaculosProgramados(String categoriaX, String idiomaX, int servTraduccion, String f1, String f2) throws SQLException, Exception
 	{
 		String res = "Reporte de las funciones existentes en los espectaculos de FestivAndes \n"+"\n";
 
@@ -452,33 +452,33 @@ public class DAOConsultas
 	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public String bono2(String f1, String f2) throws SQLException, Exception  
+	public String bono2(String f1, String f2) throws SQLException, Exception
 	{
 		// probar con 11/01/2017 00:0 y 25/07/2017 00:00
 		//sql +=	(SELECT IDFUNCION FROM funciones WHERE FECHA BETWEEN '11/01/2017 00:00' AND '25/07/2017 00:00')
-		
+
 		String res="Los Espectalos mas visitados en el rango de fechas "+f1+ " a "+f2+" son: \n";
 		res += " <Estan ordenados de manera descendente>  \n";
-		
+
 		String sql =
 		"SELECT * FROM (SELECT IDESPECTACULO,Sum(boletas) total_vendidas FROM ( (SELECT IDFUNCION, BOLETAS FROM((SELECT IDFUNCION FROM funciones WHERE FECHA BETWEEN '11/01/2017 00:00' AND '25/07/2017 00:00') NATURAL JOIN	(select IDFUNCION,Sum(NUM_SILLAS) as boletas  from COMPRA_BOLETAS group by IDFUNCION))) NATURAL JOIN FUNCIONES) group by IDESPECTACULO) NATURAL JOIN ESPECTACULOS ORDER BY total_vendidas DESC";
-		
+
 //		String sql = "SELECT *FROM(SELECT IDESPECTACULO,Sum(boletas) total_vendidas FROM ( (SELECT IDFUNCION, BOLETAS FROM(";
 //		sql += "(SELECT IDFUNCION FROM funciones WHERE FECHA BETWEEN '"+f1+"' AND '"+f2+"')";
 //		sql += "NATURAL JOIN (select IDFUNCION,Sum(NUM_SILLAS) as boletas  from COMPRA_BOLETAS group by IDFUNCION))) NATURAL JOIN FUNCIONES) group by IDESPECTACULO) NATURAL JOIN ESPECTACULOS ORDER BY total_vendidas DESC";
-//				
-				
+//
+
 		//select *
 //		sql += "FROM";
-//		sql +="(SELECT IDESPECTACULO,Sum(boletas) total_vendidas" ; 
+//		sql +="(SELECT IDESPECTACULO,Sum(boletas) total_vendidas" ;
 //		sql +="FROM ( (SELECT IDFUNCION, BOLETAS";
 //		sql +="FROM(";
 //		sql +="(SELECT IDFUNCION FROM funciones WHERE FECHA BETWEEN '"+f1+"' "+"AND"+" '"+f2+"'"+" )";
-//		sql +="NATURAL JOIN"; 
+//		sql +="NATURAL JOIN";
 //		sql +=	"(select IDFUNCION,Sum(NUM_SILLAS) as boletas  from COMPRA_BOLETAS group by IDFUNCION)";
 //		sql +="))";
 //		sql +=	"NATURAL JOIN FUNCIONES)";
-//		sql +=	"group by IDESPECTACULO)"; 
+//		sql +=	"group by IDESPECTACULO)";
 //		sql +=	"NATURAL JOIN ESPECTACULOS ORDER BY TOTAL_VENDIDAS DESC";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
@@ -511,14 +511,14 @@ public class DAOConsultas
 			if(serv_traduc==0){res += "Servicio de traduccion: No";}
 			res += "---------------------------------- \n";
 		}
-		
+
 		return res;
 	}
 
 	public String consultarCompania(int idCompania) throws SQLException, Exception
 	{
-		String res = "Los espectaculos de la compa�ia registrada con identificador "+idCompania +" son los siguientes: \n";
-		
+		String res = "Los espectaculos de la compa�ia registrada con identificador "+idCompania +" son los siguientes: \n";
+
 		String sql ="SELECT * FROM ISIS2304B301710.ESPECTACULOS WHERE ID_COMPANIA="+idCompania;
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		prepStmt.executeQuery();
@@ -528,7 +528,59 @@ public class DAOConsultas
 			int idEspectaculo = rs.getInt("IDESPECTACULO");
 			res += reporteDeUnEspectaculo(idEspectaculo);
 		}
-		
+
+		return res;
+	}
+
+	public String consultarAsistencia(int idCompania, String xFechaInicio, String xFechaFinal, String xorderBy) throws SQLException, Exception
+	{
+		String res = "Los siguientes son los clientes que han asistido a funciones de la compañía "+idCompania +": \n";
+
+		String sql ="(SELECT DISTINCT CLI.* FROM (SELECT * FROM	(SELECT * FROM	(SELECT * FROM ISIS2304B301710.ESPECTACULOS WHERE ID_COMPANIA="+ idCompania+") ESPC	JOIN (SELECT * FROM ISIS2304B301710.FUNCIONES WHERE FECHA BETWEEN "+xFechaInicio +"AND"+ xFechaFinal+") F ON ESPC.IDESPECTACULO = F.IDESPECTACULO) FUNCTS JOIN ISIS2304B301710.COMPRA_BOLETAS CB ON CB.IDFUNCION = FUNCTS.IDFUNCION) CBOLETAS JOIN ISIS2304B301710.CLIENTES CLI ON CBOLETAS.IDCLIENTE = CLI.IDENTIFICACION)";
+
+		//Agrega criterios de ordenamiento
+		if(xorderBy != null) sql+= "ORDER BY "+xorderBy;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		prepStmt.executeQuery();
+		ResultSet rs = prepStmt.executeQuery();
+		while(rs.next())
+		{
+			//Detalla cada cliente
+			int idCli = rs.getInt("IDENTIFICACION");
+			String tipoId = rs.getString("TIPOIDENTIFICACION");
+			String nombre = rs.getString("NOMBRE");
+
+			res+= "Nombre: "+nombre +"\n"+"ID: "+tipoId+" "+idCli +"\n";
+		}
+
+		return res;
+	}
+
+	public String consultarInasistencia(int idCompania, String xFechaInicio, String xFechaFinal, String xorderBy) throws SQLException, Exception
+	{
+		String res = "Los siguientes son los clientes que no han asistido a funciones de la compañía "+idCompania +": \n";
+
+		String sql ="SELECT DISTINCT CLI.* FROM (SELECT IDCLIENTE, CATEGORIA FROM	(SELECT * FROM	(SELECT * FROM ISIS2304B301710.ESPECTACULOS WHERE ID_COMPANIA="+ idCompania+") ESPC	JOIN (SELECT * FROM ISIS2304B301710.FUNCIONES WHERE FECHA BETWEEN "+xFechaInicio +"AND"+ xFechaFinal+") F ON ESPC.IDESPECTACULO = F.IDESPECTACULO) FUNCTS JOIN ISIS2304B301710.COMPRA_BOLETAS CB ON CB.IDFUNCION = FUNCTS.IDFUNCION) CBOLETAS RIGHT JOIN ISIS2304B301710.CLIENTES CLI ON CBOLETAS.IDCLIENTE = CLI.IDENTIFICACION WHERE CATEGORIA IS NULL";
+
+		//Agrega criterios de ordenamiento
+		if(xorderBy != null) sql+= "ORDER BY "+xorderBy;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		prepStmt.executeQuery();
+		ResultSet rs = prepStmt.executeQuery();
+		while(rs.next())
+		{
+			//Detalla cada cliente
+			//Detalla cada cliente
+			int idCli = rs.getInt("IDENTIFICACION");
+			String tipoId = rs.getString("TIPOIDENTIFICACION");
+			String nombre = rs.getString("NOMBRE");
+
+			res+= "Nombre: "+nombre +"\n"+"ID: "+tipoId+" "+idCli +"\n";
+
+		}
+
 		return res;
 	}
 }
